@@ -1,20 +1,25 @@
 #include <stdio.h>
+#include <string.h>
 
 int main() {
-	//for (int i = 0; i < 10; i++) {
-	//	printf("%d\n", i);
-//	}
-//	bool ishascar = true;
-	//int x = 0;
-	//while (ishascar) {
-		//printf("Ведите цифру:");
-		//scanf_s("%d", &x);
-		//if (x == 1)
-			//ishascar = false;
-	//}
-	bool ishas = false;
-	do {
-		printf("Yes\n");
-	} while (ishas);
-	return 0;
+    char s1[100];
+    char s2[4];
+    int count = 0;
+
+    printf("Vvedite stroku\n");
+    fgets(s1, sizeof(s1),stdin);
+    printf("Vvedite podstroku\n");
+    fgets(s2, sizeof(s2), stdin);
+    char* p = s1;
+
+    do {
+        p = strstr(p, s2);
+        if (p != NULL) {
+            count++;
+            p = &p[strlen(s2)];
+        }
+    } while (p != NULL);
+
+    printf("Chislo vhozhdeniy = %d\n", count);
+    return 0;
 }
